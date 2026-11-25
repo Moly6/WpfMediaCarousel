@@ -84,6 +84,7 @@
                                     Visibility="{Binding ShowNavigationButtons, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource BooleanToVisibilityConverter}}" />
 
                                 <Border
+                                    Margin="0,0,0,10"
                                     Padding="10,5"
                                     HorizontalAlignment="Center"
                                     VerticalAlignment="Bottom"
@@ -93,7 +94,7 @@
 
                                     <ListBox
                                         x:Name="Indicators"
-                                        Height="30"
+                                        HorizontalAlignment="Center"
                                         Background="Transparent"
                                         BorderThickness="0"
                                         ItemsSource="{Binding Items, RelativeSource={RelativeSource TemplatedParent}}"
@@ -103,7 +104,6 @@
                                         <ListBox.ItemsPanel>
                                             <ItemsPanelTemplate>
                                                 <StackPanel
-                                                    Margin="0,0,0,15"
                                                     HorizontalAlignment="Center"
                                                     VerticalAlignment="Bottom"
                                                     Orientation="Horizontal" />
@@ -118,7 +118,7 @@
                                                                 Name="Dot"
                                                                 Width="8"
                                                                 Height="8"
-                                                                Margin="3,0"
+                                                                Margin="3,3"
                                                                 Cursor="Hand"
                                                                 Fill="White"
                                                                 Opacity="0.5"
