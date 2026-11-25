@@ -1,5 +1,7 @@
 # WpfMediaCarousel
 
+English | [简体中文](README.zh-CN.md)
+
 A reusable WPF control for presenting image and video items in a carousel.
 
 ## Features
@@ -18,7 +20,13 @@ A reusable WPF control for presenting image and video items in a carousel.
 
 ## Add to an application
 
-The source is available in this repository. Add `src/WpfMediaCarousel/WpfMediaCarousel.csproj` to your WPF solution, then reference the control namespace:
+Install the package from NuGet:
+
+```powershell
+dotnet add package WpfMediaCarousel
+```
+
+Or search for `WpfMediaCarousel` in Visual Studio's NuGet Package Manager. To build from source instead, add `src/WpfMediaCarousel/WpfMediaCarousel.csproj` to your WPF solution. Then reference the control namespace:
 
 ```xml
 xmlns:carousel="clr-namespace:MediaCarousel.Controls;assembly=WpfMediaCarousel"
@@ -86,10 +94,10 @@ The control also exposes `Next()`, `Previous()`, `StartCarousel()`, `StopCarouse
 
 ## Demo
 
-See [WpfMediaCarousel.Demo](https://github.com/Moly6/WpfMediaCarousel.Demo) for a runnable example. Clone it with submodules:
+See [WpfMediaCarousel.Demo](https://github.com/Moly6/WpfMediaCarousel.Demo) for a runnable example that consumes the NuGet package.
 
 ```powershell
-git clone --recurse-submodules https://github.com/Moly6/WpfMediaCarousel.Demo.git
+git clone https://github.com/Moly6/WpfMediaCarousel.Demo.git
 ```
 
 ## License

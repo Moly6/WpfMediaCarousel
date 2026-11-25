@@ -83,130 +83,136 @@
                                     Foreground="White"
                                     Visibility="{Binding ShowNavigationButtons, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource BooleanToVisibilityConverter}}" />
 
-                                <ListBox
-                                    x:Name="Indicators"
-                                    Height="30"
+                                <Border
+                                    Padding="10,5"
                                     HorizontalAlignment="Center"
                                     VerticalAlignment="Bottom"
-                                    Background="Transparent"
-                                    BorderThickness="0"
-                                    ItemsSource="{Binding Items, RelativeSource={RelativeSource TemplatedParent}}"
-                                    ScrollViewer.HorizontalScrollBarVisibility="Hidden"
-                                    ScrollViewer.VerticalScrollBarVisibility="Hidden"
-                                    SelectedIndex="{Binding SelectedIndex, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}"
+                                    Background="#33000000"
+                                    CornerRadius="10"
                                     Visibility="{Binding ShowIndicators, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource BooleanToVisibilityConverter}}">
-                                    <ListBox.ItemsPanel>
-                                        <ItemsPanelTemplate>
-                                            <StackPanel
-                                                Margin="0,0,0,15"
-                                                HorizontalAlignment="Center"
-                                                VerticalAlignment="Bottom"
-                                                Orientation="Horizontal" />
-                                        </ItemsPanelTemplate>
-                                    </ListBox.ItemsPanel>
-                                    <ListBox.ItemContainerStyle>
-                                        <Style TargetType="ListBoxItem">
-                                            <Setter Property="Template">
-                                                <Setter.Value>
-                                                    <ControlTemplate TargetType="ListBoxItem">
-                                                        <Ellipse
-                                                            Name="Dot"
-                                                            Width="8"
-                                                            Height="8"
-                                                            Margin="3,0"
-                                                            Cursor="Hand"
-                                                            Fill="White"
-                                                            Opacity="0.5"
-                                                            RenderTransformOrigin="0.5,0.5"
-                                                            SnapsToDevicePixels="True"
-                                                            Stroke="White"
-                                                            StrokeThickness="1">
 
-                                                            <Ellipse.RenderTransform>
-                                                                <ScaleTransform ScaleX="1" ScaleY="1" />
-                                                            </Ellipse.RenderTransform>
-                                                        </Ellipse>
+                                    <ListBox
+                                        x:Name="Indicators"
+                                        Height="30"
+                                        Background="Transparent"
+                                        BorderThickness="0"
+                                        ItemsSource="{Binding Items, RelativeSource={RelativeSource TemplatedParent}}"
+                                        ScrollViewer.HorizontalScrollBarVisibility="Hidden"
+                                        ScrollViewer.VerticalScrollBarVisibility="Hidden"
+                                        SelectedIndex="{Binding SelectedIndex, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}">
+                                        <ListBox.ItemsPanel>
+                                            <ItemsPanelTemplate>
+                                                <StackPanel
+                                                    Margin="0,0,0,15"
+                                                    HorizontalAlignment="Center"
+                                                    VerticalAlignment="Bottom"
+                                                    Orientation="Horizontal" />
+                                            </ItemsPanelTemplate>
+                                        </ListBox.ItemsPanel>
+                                        <ListBox.ItemContainerStyle>
+                                            <Style TargetType="ListBoxItem">
+                                                <Setter Property="Template">
+                                                    <Setter.Value>
+                                                        <ControlTemplate TargetType="ListBoxItem">
+                                                            <Ellipse
+                                                                Name="Dot"
+                                                                Width="8"
+                                                                Height="8"
+                                                                Margin="3,0"
+                                                                Cursor="Hand"
+                                                                Fill="White"
+                                                                Opacity="0.5"
+                                                                RenderTransformOrigin="0.5,0.5"
+                                                                SnapsToDevicePixels="True"
+                                                                Stroke="White"
+                                                                StrokeThickness="1">
 
-                                                        <ControlTemplate.Triggers>
+                                                                <Ellipse.RenderTransform>
+                                                                    <ScaleTransform ScaleX="1" ScaleY="1" />
+                                                                </Ellipse.RenderTransform>
+                                                            </Ellipse>
 
-                                                            <Trigger Property="IsSelected" Value="True">
-                                                                <Trigger.EnterActions>
-                                                                    <BeginStoryboard>
-                                                                        <Storyboard>
+                                                            <ControlTemplate.Triggers>
 
-                                                                            <!--  透明度  -->
-                                                                            <DoubleAnimation
-                                                                                Storyboard.TargetName="Dot"
-                                                                                Storyboard.TargetProperty="Opacity"
-                                                                                To="1"
-                                                                                Duration="0:0:0.12" />
+                                                                <Trigger Property="IsSelected" Value="True">
+                                                                    <Trigger.EnterActions>
+                                                                        <BeginStoryboard>
+                                                                            <Storyboard>
 
-                                                                            <!--  X 放大（带弹性）  -->
-                                                                            <DoubleAnimation
-                                                                                Storyboard.TargetName="Dot"
-                                                                                Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleX)"
-                                                                                To="1.5"
-                                                                                Duration="0:0:0.2">
-                                                                                <DoubleAnimation.EasingFunction>
-                                                                                    <BackEase Amplitude="0.4" EasingMode="EaseOut" />
-                                                                                </DoubleAnimation.EasingFunction>
-                                                                            </DoubleAnimation>
+                                                                                <!--  透明度  -->
+                                                                                <DoubleAnimation
+                                                                                    Storyboard.TargetName="Dot"
+                                                                                    Storyboard.TargetProperty="Opacity"
+                                                                                    To="1"
+                                                                                    Duration="0:0:0.12" />
 
-                                                                            <!--  Y 放大（带弹性）  -->
-                                                                            <DoubleAnimation
-                                                                                Storyboard.TargetName="Dot"
-                                                                                Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleY)"
-                                                                                To="1.5"
-                                                                                Duration="0:0:0.2">
-                                                                                <DoubleAnimation.EasingFunction>
-                                                                                    <BackEase Amplitude="0.4" EasingMode="EaseOut" />
-                                                                                </DoubleAnimation.EasingFunction>
-                                                                            </DoubleAnimation>
+                                                                                <!--  X 放大（带弹性）  -->
+                                                                                <DoubleAnimation
+                                                                                    Storyboard.TargetName="Dot"
+                                                                                    Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleX)"
+                                                                                    To="1.5"
+                                                                                    Duration="0:0:0.2">
+                                                                                    <DoubleAnimation.EasingFunction>
+                                                                                        <BackEase Amplitude="0.4" EasingMode="EaseOut" />
+                                                                                    </DoubleAnimation.EasingFunction>
+                                                                                </DoubleAnimation>
 
-                                                                        </Storyboard>
-                                                                    </BeginStoryboard>
-                                                                </Trigger.EnterActions>
+                                                                                <!--  Y 放大（带弹性）  -->
+                                                                                <DoubleAnimation
+                                                                                    Storyboard.TargetName="Dot"
+                                                                                    Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleY)"
+                                                                                    To="1.5"
+                                                                                    Duration="0:0:0.2">
+                                                                                    <DoubleAnimation.EasingFunction>
+                                                                                        <BackEase Amplitude="0.4" EasingMode="EaseOut" />
+                                                                                    </DoubleAnimation.EasingFunction>
+                                                                                </DoubleAnimation>
 
-                                                                <!--  取消选中：平滑缩回  -->
-                                                                <Trigger.ExitActions>
-                                                                    <BeginStoryboard>
-                                                                        <Storyboard>
+                                                                            </Storyboard>
+                                                                        </BeginStoryboard>
+                                                                    </Trigger.EnterActions>
 
-                                                                            <DoubleAnimation
-                                                                                Storyboard.TargetName="Dot"
-                                                                                Storyboard.TargetProperty="Opacity"
-                                                                                To="0.5"
-                                                                                Duration="0:0:0.12" />
+                                                                    <!--  取消选中：平滑缩回  -->
+                                                                    <Trigger.ExitActions>
+                                                                        <BeginStoryboard>
+                                                                            <Storyboard>
 
-                                                                            <DoubleAnimation
-                                                                                Storyboard.TargetName="Dot"
-                                                                                Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleX)"
-                                                                                To="1"
-                                                                                Duration="0:0:0.15" />
+                                                                                <DoubleAnimation
+                                                                                    Storyboard.TargetName="Dot"
+                                                                                    Storyboard.TargetProperty="Opacity"
+                                                                                    To="0.5"
+                                                                                    Duration="0:0:0.12" />
 
-                                                                            <DoubleAnimation
-                                                                                Storyboard.TargetName="Dot"
-                                                                                Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleY)"
-                                                                                To="1"
-                                                                                Duration="0:0:0.15" />
+                                                                                <DoubleAnimation
+                                                                                    Storyboard.TargetName="Dot"
+                                                                                    Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleX)"
+                                                                                    To="1"
+                                                                                    Duration="0:0:0.15" />
 
-                                                                        </Storyboard>
-                                                                    </BeginStoryboard>
-                                                                </Trigger.ExitActions>
-                                                            </Trigger>
+                                                                                <DoubleAnimation
+                                                                                    Storyboard.TargetName="Dot"
+                                                                                    Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleY)"
+                                                                                    To="1"
+                                                                                    Duration="0:0:0.15" />
+
+                                                                            </Storyboard>
+                                                                        </BeginStoryboard>
+                                                                    </Trigger.ExitActions>
+                                                                </Trigger>
 
 
-                                                        </ControlTemplate.Triggers>
-                                                    </ControlTemplate>
-                                                </Setter.Value>
-                                            </Setter>
-                                            <Setter Property="IsHitTestVisible" Value="True" />
-                                            <Setter Property="Focusable" Value="True" />
-                                            <Setter Property="Margin" Value="0" />
-                                            <Setter Property="Padding" Value="0" />
-                                        </Style>
-                                    </ListBox.ItemContainerStyle>
-                                </ListBox>
+                                                            </ControlTemplate.Triggers>
+                                                        </ControlTemplate>
+                                                    </Setter.Value>
+                                                </Setter>
+                                                <Setter Property="IsHitTestVisible" Value="True" />
+                                                <Setter Property="Focusable" Value="True" />
+                                                <Setter Property="Margin" Value="0" />
+                                                <Setter Property="Padding" Value="0" />
+                                            </Style>
+                                        </ListBox.ItemContainerStyle>
+                                    </ListBox>
+                                </Border>
 
                             </Grid>
                         </Grid>
